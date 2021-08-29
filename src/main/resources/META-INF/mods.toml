@@ -1,0 +1,37 @@
+modLoader="javafml" #mandatory
+loaderVersion="[37,)"
+issueTrackerURL="https://github.com/Crimix/TabStats/issues"
+# Review your options at https://choosealicense.com/. All rights reserved is the default copyright stance, and is thus the default here.
+license="All rights reserved"
+
+[[mods]] #mandatory
+modId="tabstats"
+authors="black_dog20"
+displayURL="https://minecraft.curseforge.com/projects/tab-stats"
+version="${file.jarVersion}"
+displayName="Tab Stats"
+updateJSONURL="https://raw.githubusercontent.com/Crimix/ServerTabInfo/TabStats/update.json"
+logoFile="tabstats-logo.png"
+credits="To all my friends for putting up with me breaking the server multiple times during testing"
+description='''
+
+'''
+
+[[dependencies.tabstats]]
+    modId="forge"
+    mandatory=true
+    versionRange="[37.0.7,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.tabstats]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.17.1,1.18)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.knowledgedrop]]
+    modId="blackdogsmoddinglibrary"
+    mandatory=true
+    versionRange="[1.1.4,)"
+    ordering="BEFORE"
+    side="BOTH"

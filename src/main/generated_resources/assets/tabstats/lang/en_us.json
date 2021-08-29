@@ -1,0 +1,12 @@
+{
+  "tabstats.gui.deaths": "Deaths",
+  "tabstats.gui.deaths_per_hour": "Deaths/Hour",
+  "tabstats.gui.kills": "Kills",
+  "tabstats.gui.last_seen": "Last Seen",
+  "tabstats.gui.name": "Name",
+  "tabstats.gui.now": "Now",
+  "tabstats.gui.page": "Page %d of %d",
+  "tabstats.gui.time_played": "Time played",
+  "tabstats.keys.category": "Tab Stats",
+  "tabstats.keys.show": "Show Tab Stats list"
+}

@@ -1,0 +1,10 @@
+{
+  "homepage": "https://www.curseforge.com/minecraft/mc-mods/tab-stats",
+  "1.17.1": {
+    "1.0.0-b1": "https://github.com/Crimix/TabStats/blob/1.17/CHANGELOG.md"
+  },
+  "promos": {
+    "1.17.1-latest": "1.0.0-b1",
+    "1.17.1-recommended": "1.0.0-b1"
+  }
+}
