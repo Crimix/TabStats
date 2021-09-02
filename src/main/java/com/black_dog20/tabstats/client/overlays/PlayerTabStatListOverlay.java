@@ -46,9 +46,9 @@ import static com.black_dog20.tabstats.common.utils.Translations.*;
 public class PlayerTabStatListOverlay extends GameOverlay.PreLayer {
 
     private static final Ordering<PlayerStat> ENTRY_ORDERING = Ordering.from(new PlayerComparator());
-    private Minecraft minecraft;
-    private Font fontRenderer;
-    private ItemRenderer itemRenderer;
+    private final Minecraft minecraft;
+    private final Font fontRenderer;
+    private final ItemRenderer itemRenderer;
     private long lastRenderTime = Util.getMillis();
     private int ticks = 0;
     private int page = 1;
