@@ -20,7 +20,7 @@ description='''
 [[dependencies.tabstats]]
     modId="forge"
     mandatory=true
-    versionRange="[37.0.7,)"
+    versionRange="[37.1.0,)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.tabstats]]
@@ -28,10 +28,4 @@ description='''
     mandatory=true
     versionRange="[1.17.1,1.18)"
     ordering="NONE"
-    side="BOTH"
-[[dependencies.knowledgedrop]]
-    modId="blackdogsmoddinglibrary"
-    mandatory=true
-    versionRange="[1.1.4,)"
-    ordering="BEFORE"
     side="BOTH"

@@ -24,8 +24,8 @@ import net.minecraft.client.multiplayer.ClientPacketListener;
 import net.minecraft.client.multiplayer.PlayerInfo;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.TextComponent;
+import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
@@ -137,6 +137,7 @@ public class PlayerTabStatListOverlay extends GameOverlay.PreLayer {
     private Row buildRow(PlayerStat playerStat, List<UUID> onlineUuids) {
         Row.RowBuilder builder = new Row.RowBuilder();
 
+        Player entityplayer = Minecraft.getInstance().level.getPlayerByUUID(playerStat.uuid());
 
         return builder
                 .withColumn(getHeadColumn(playerStat, onlineUuids), this::isNotLocalOnly)
@@ -188,7 +189,7 @@ public class PlayerTabStatListOverlay extends GameOverlay.PreLayer {
         return !Minecraft.getInstance().hasSingleplayerServer();
     }
 
-    private MutableComponent getTitleComponent(Translations title) {
+    private Component getTitleComponent(Translations title) {
         return title.get(ChatFormatting.DARK_GREEN);
     }
 
@@ -217,21 +218,51 @@ public class PlayerTabStatListOverlay extends GameOverlay.PreLayer {
     }
 
     private Component getPlayerTimePlayed(PlayerStat playerStat) {
-        return new TextComponent(formatTime(playerStat.playTime() / 20L));
+        int playTime = playerStat.playTime();
+
+        if (playTime < 0) {
+            return new TextComponent("-").withStyle(ChatFormatting.RED);
+        }
+
+        return new TextComponent(formatTime(playTime / 20L));
     }
 
     private Component getPlayerKills(PlayerStat playerStat) {
-        return new TextComponent(Integer.toString(playerStat.kills()));
+        int kills = playerStat.kills();
+
+        if (kills < 0) {
+            return new TextComponent("-").withStyle(ChatFormatting.RED);
+        }
+
+        return new TextComponent(Integer.toString(kills));
     }
 
     private Component getPlayerDeaths(PlayerStat playerStat) {
-        return new TextComponent(Integer.toString(playerStat.deaths()));
+        int deaths = playerStat.deaths();
+
+        if (deaths < 0) {
+            return new TextComponent("-").withStyle(ChatFormatting.RED);
+        }
+
+        return new TextComponent(Integer.toString(deaths));
     }
 
     private Component getPlayerDeathsPerHour(PlayerStat playerStat) {
-        double hours = ((double) (playerStat.playTime() / 20L) / 3600L);
-        double deathsPerHour = (double) playerStat.deaths() / hours;
-        return new TextComponent(deathsPerHour < 0D ? "-" : String.format("%.2f", deathsPerHour));
+        int playTime = playerStat.playTime();
+        int deaths = playerStat.deaths();
+
+        if (playTime < 0 || deaths < 0) {
+            return new TextComponent("-").withStyle(ChatFormatting.RED);
+        }
+
+        double hours = ((double) (playTime / 20L) / 3600L);
+        if (hours != 0) {
+            double deathsPerHour = (double) deaths / hours;
+            return new TextComponent(deathsPerHour < 0D ? "-" : String.format("%.2f", deathsPerHour));
+        } else {
+            return new TextComponent("-").withStyle(ChatFormatting.RED);
+        }
+
     }
 
     public static String formatTime(long secs)
@@ -272,10 +303,10 @@ public class PlayerTabStatListOverlay extends GameOverlay.PreLayer {
     static class PlayerComparator implements Comparator<PlayerStat> {
 
         public int compare(PlayerStat player1, PlayerStat player2) {
-            return Comparator.nullsLast(Comparator.comparing(PlayerStat::getLastOnlineOrNull))
-                    .thenComparing(PlayerStat::playTime)
+            return Comparator.comparing(PlayerStat::getLastOnlineOrNull, Comparator.nullsLast(Comparator.naturalOrder()))
+                    .thenComparing(PlayerStat::playTime).reversed()
                     .thenComparing(PlayerStat::deaths)
-                    .thenComparing(PlayerStat::kills)
+                    .thenComparing(PlayerStat::kills).reversed()
                     .compare(player1, player2);
         }
     }

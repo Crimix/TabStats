@@ -41,6 +41,7 @@ public class ServerEvents {
     private static ConcurrentHashMap<String, Long> LAST_SEEN_MAP = new ConcurrentHashMap<>();
     private static Map<UUID, PlayerStat> playerStatMap = new ConcurrentHashMap<>();
     private static int ticks = 0;
+    private static int backupTicks = 0;
 
     @SubscribeEvent
     public static void onTick(TickEvent.ServerTickEvent event) {
@@ -185,17 +186,17 @@ public class ServerEvents {
 
         MinecraftServer server = ServerLifecycleHooks.getCurrentServer();
         if(server.getPlayerList().getPlayerCount() == 0){
-            ticks = 0;
+            backupTicks = 0;
             return;
         }
 
-        if (ticks % 6000 == 0) {
+        if (backupTicks % 6000 == 0) {
             ServerLevel world = server.overworld();
             saveLastSeen(world);
-            ticks = 1;
+            backupTicks = 1;
             return;
         }
 
-        ticks++;
+        backupTicks++;
     }
 }

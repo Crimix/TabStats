@@ -1,8 +1,8 @@
 buildscript {
     repositories {
+        mavenCentral()
         maven { url = 'https://maven.minecraftforge.net' }
         maven { url = 'https://maven.parchmentmc.org' }
-        mavenCentral()
         maven { url = "https://oss.sonatype.org/content/repositories/snapshots/" }
         maven { url "https://plugins.gradle.org/m2/" }
     }
@@ -16,6 +16,7 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'org.parchmentmc.librarian.forgegradle'
 // Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 apply from: 'https://raw.githubusercontent.com/Crimix/bml/1.17/common.gradle'
+apply from: 'https://raw.githubusercontent.com/Crimix/bml/1.17/shadow.gradle'
 
 version = version_major + '.' + version_minor + '.' + version_patch
 group = "${mod_group}" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
@@ -143,7 +144,8 @@ dependencies {
     minecraft "net.minecraftforge:forge:${project.mc_version}-${project.forge_version}"
 
     implementation fg.deobf("curse.maven:jade-324717:${jade_version}")
-    implementation fg.deobf("com.black_dog20.bml:bml:${bml_version}")
+    shadowCompileOnly fg.deobf("com.black_dog20.bml:bml:${bml_version}")
+    runtimeOnly fg.deobf("com.black_dog20.bml:bml:${bml_version}")
 }
 
 jar {
@@ -158,7 +160,10 @@ jar {
     }
 }
 
-jar.finalizedBy('reobfJar')
+shadowJar {
+    configurations = [project.configurations.shadowCompileOnly]
+    relocate 'com.black_dog20.bml', 'com.black_dog20.tabstats.repack.bml'
+}
 
 curseforge {
     apiKey = curse_apiKey
@@ -166,7 +171,7 @@ curseforge {
         id = '521717'
         changelogType = 'markdown'
         changelog = 'As always find the changelog here [CHANGELOG](https://github.com/Crimix/TabStats/blob/1.17/CHANGELOG.md)'
-        releaseType = 'beta'
+        releaseType = 'release'
         addGameVersion 'Forge'
         addGameVersion 'Java 16'
         addGameVersion '1.17.1'
