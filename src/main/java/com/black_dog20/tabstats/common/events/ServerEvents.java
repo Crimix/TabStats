@@ -15,12 +15,12 @@ import net.minecraft.world.level.storage.LevelResource;
 import net.minecraftforge.common.UsernameCache;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.event.server.ServerStartingEvent;
+import net.minecraftforge.event.server.ServerStoppingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.util.thread.EffectiveSide;
-import net.minecraftforge.fmllegacy.server.ServerLifecycleHooks;
-import net.minecraftforge.fmlserverevents.FMLServerStartingEvent;
-import net.minecraftforge.fmlserverevents.FMLServerStoppingEvent;
+import net.minecraftforge.server.ServerLifecycleHooks;
 
 import java.io.File;
 import java.lang.reflect.Type;
@@ -160,7 +160,7 @@ public class ServerEvents {
     }
 
     @SubscribeEvent
-    public static void onServerStarting(FMLServerStartingEvent event) {
+    public static void onServerStarting(ServerStartingEvent event) {
         try {
             ServerLevel world = event.getServer().overworld();
             loadLastSeen(world);
@@ -170,7 +170,7 @@ public class ServerEvents {
     }
 
     @SubscribeEvent
-    public static void onServerShutdown(FMLServerStoppingEvent event) {
+    public static void onServerShutdown(ServerStoppingEvent event) {
         try {
             ServerLevel world = event.getServer().overworld();
             saveLastSeen(world);

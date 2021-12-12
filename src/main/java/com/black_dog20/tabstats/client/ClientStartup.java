@@ -5,10 +5,10 @@ import com.black_dog20.tabstats.TabStats;
 import com.black_dog20.tabstats.client.keybinds.Keybinds;
 import com.black_dog20.tabstats.client.overlays.PlayerTabStatListOverlay;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.ClientRegistry;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.fmlclient.registry.ClientRegistry;
 
 @Mod.EventBusSubscriber( modid = TabStats.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ClientStartup {

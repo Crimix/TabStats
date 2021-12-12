@@ -1,5 +1,5 @@
 modLoader="javafml" #mandatory
-loaderVersion="[37,)"
+loaderVersion="[38,)"
 issueTrackerURL="https://github.com/Crimix/TabStats/issues"
 # Review your options at https://choosealicense.com/. All rights reserved is the default copyright stance, and is thus the default here.
 license="All rights reserved"
@@ -20,12 +20,12 @@ description='''
 [[dependencies.tabstats]]
     modId="forge"
     mandatory=true
-    versionRange="[37.1.0,)"
+    versionRange="[38.0.17,)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.tabstats]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.17.1,1.18)"
+    versionRange="[1.18,1.19)"
     ordering="NONE"
     side="BOTH"
