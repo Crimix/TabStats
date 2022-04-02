@@ -9,11 +9,13 @@ buildscript {
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
         classpath 'org.parchmentmc:librarian:1.+'
+        classpath "io.github.crimix:ReplacePlaceholdersPlugin:1.0"
     }
 }
 
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'org.parchmentmc.librarian.forgegradle'
+apply plugin: "io.github.crimix.replace-placeholders"
 // Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 apply from: 'https://raw.githubusercontent.com/Crimix/bml/1.18/common.gradle'
 apply from: 'https://raw.githubusercontent.com/Crimix/bml/1.18/shadow.gradle'
@@ -165,6 +167,15 @@ shadowJar {
     relocate 'com.black_dog20.bml', 'com.black_dog20.tabstats.repack.bml'
 }
 
+replacePlaceholders {
+    filesToExpand = [
+            "META-INF/mods.toml"
+    ]
+    extraProperties = [
+            "version"
+    ]
+}
+
 curseforge {
     apiKey = curse_apiKey
     project {
@@ -174,7 +185,6 @@ curseforge {
         releaseType = 'release'
         addGameVersion 'Forge'
         addGameVersion 'Java 17'
-        addGameVersion '1.18'
-        addGameVersion '1.18.1'
+        addGameVersion '1.18.2'
     }
 }

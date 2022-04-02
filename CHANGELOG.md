@@ -1,6 +1,9 @@
 # Tab Stats Changelog
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
+## [1.18.2, 1.0.2] - 2021-04-02
+- Port to 1.18.2 may be a bit unstable as Forge 1.18.2 is in beta
+
 ## [1.18, 1.0.1] - 2022-01-23
 - Fixed broken update check (Thanks to Silverminer007)
 

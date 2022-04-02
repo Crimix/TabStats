@@ -4,17 +4,22 @@
     "1.0.0": "https://github.com/Crimix/TabStats/blob/1.17/CHANGELOG.md"
   },
   "1.18": {
-    "1.0.0": "https://github.com/Crimix/TabStats/blob/1.18/CHANGELOG.md"
+    "1.0.1": "https://github.com/Crimix/TabStats/blob/1.18/CHANGELOG.md"
   },
   "1.18.1": {
-    "1.0.0": "https://github.com/Crimix/TabStats/blob/1.18/CHANGELOG.md"
+    "1.0.1": "https://github.com/Crimix/TabStats/blob/1.18/CHANGELOG.md"
+  },
+  "1.18.2": {
+    "1.0.2": "https://github.com/Crimix/TabStats/blob/1.18/CHANGELOG.md"
   },
   "promos": {
     "1.17.1-latest": "1.0.0",
     "1.17.1-recommended": "1.0.0",
-    "1.18-latest": "1.0.0",
-    "1.18-recommended": "1.0.0",
-    "1.18.1-latest": "1.0.0",
-    "1.18.1-recommended": "1.0.0"
+    "1.18-latest": "1.0.1",
+    "1.18-recommended": "1.0.1",
+    "1.18.1-latest": "1.0.1",
+    "1.18.1-recommended": "1.0.1",
+    "1.18.2-latest": "1.0.2",
+    "1.18.2-recommended": "1.0.2"
   }
 }
