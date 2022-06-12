@@ -177,3 +177,13 @@ curseforge {
         addGameVersion '1.18.2'
     }
 }
+
+modrinth {
+    token = modrinth_token
+    projectId = "zWtYC4e6"
+    uploadFile = jar
+    changelog = 'As always find the changelog here [CHANGELOG](https://github.com/Crimix/TabStats/blob/1.18/CHANGELOG.md)'
+    versionType = "release"
+    loaders = ["forge"]
+    gameVersions = ["1.18.2"]
+}

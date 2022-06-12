@@ -1,5 +1,7 @@
-[![](http://cf.way2muchnoise.eu/full_tab-stats_downloads.svg)](https://www.curseforge.com/minecraft/mc-mods/tab-stats)
-[![](http://cf.way2muchnoise.eu/versions/tab-stats.svg)](https://www.curseforge.com/minecraft/mc-mods/tab-stats)
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fcurseforge-badge-shields-io-caaw7pcenm0t.runkit.sh%2Fdownloads%3FprojectId%3D521717%26mode%3Dfull)](https://minecraft.curseforge.com/projects/tab-stats)
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fcurseforge-badge-shields-io-caaw7pcenm0t.runkit.sh%2Fversions%3FprojectId%3D521717)](https://minecraft.curseforge.com/projects/tab-stats)   
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fmodrinth-badge-shields-io-s1co4c2czdpy.runkit.sh/%2Fdownloads%3FprojectId%3DzWtYC4e6%26mode%3Dfull)](https://modrinth.com/mod/tab-stats)
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fmodrinth-badge-shields-io-s1co4c2czdpy.runkit.sh%2Fversions%3FprojectId%3DzWtYC4e6)](https://modrinth.com/mod/tab-stats)
 # Tab Stats
 [Tab Stats](https://minecraft.curseforge.com/projects/tab-stats) is a mod that will show you all player's stats that have ever played on the server.   
 
