@@ -24,7 +24,6 @@ import net.minecraft.client.multiplayer.ClientPacketListener;
 import net.minecraft.client.multiplayer.PlayerInfo;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -204,16 +203,16 @@ public class PlayerTabStatListOverlay extends GameOverlay.PreLayer {
     }
 
     private Component getPlayerName(PlayerStat playerStat) {
-        return new TextComponent(playerStat.playerName());
+        return Component.literal(playerStat.playerName());
     }
 
     private Component getPlayerLastSeen(PlayerStat playerStat) {
         if (playerStat.lastOnline() == 0) {
             return NOW.get(ChatFormatting.GREEN);
         } else if (playerStat.lastOnline() < 0) {
-            return new TextComponent("-").withStyle(ChatFormatting.RED);
+            return Component.literal("-").withStyle(ChatFormatting.RED);
         } else {
-            return new TextComponent(formatTime(playerStat.lastOnline()));
+            return Component.literal(formatTime(playerStat.lastOnline()));
         }
     }
 
@@ -221,30 +220,30 @@ public class PlayerTabStatListOverlay extends GameOverlay.PreLayer {
         int playTime = playerStat.playTime();
 
         if (playTime < 0) {
-            return new TextComponent("-").withStyle(ChatFormatting.RED);
+            return Component.literal("-").withStyle(ChatFormatting.RED);
         }
 
-        return new TextComponent(formatTime(playTime / 20L));
+        return Component.literal(formatTime(playTime / 20L));
     }
 
     private Component getPlayerKills(PlayerStat playerStat) {
         int kills = playerStat.kills();
 
         if (kills < 0) {
-            return new TextComponent("-").withStyle(ChatFormatting.RED);
+            return Component.literal("-").withStyle(ChatFormatting.RED);
         }
 
-        return new TextComponent(Integer.toString(kills));
+        return Component.literal(Integer.toString(kills));
     }
 
     private Component getPlayerDeaths(PlayerStat playerStat) {
         int deaths = playerStat.deaths();
 
         if (deaths < 0) {
-            return new TextComponent("-").withStyle(ChatFormatting.RED);
+            return Component.literal("-").withStyle(ChatFormatting.RED);
         }
 
-        return new TextComponent(Integer.toString(deaths));
+        return Component.literal(Integer.toString(deaths));
     }
 
     private Component getPlayerDeathsPerHour(PlayerStat playerStat) {
@@ -252,15 +251,15 @@ public class PlayerTabStatListOverlay extends GameOverlay.PreLayer {
         int deaths = playerStat.deaths();
 
         if (playTime < 0 || deaths < 0) {
-            return new TextComponent("-").withStyle(ChatFormatting.RED);
+            return Component.literal("-").withStyle(ChatFormatting.RED);
         }
 
         double hours = ((double) (playTime / 20L) / 3600L);
         if (hours != 0) {
             double deathsPerHour = (double) deaths / hours;
-            return new TextComponent(deathsPerHour < 0D ? "-" : String.format("%.2f", deathsPerHour));
+            return Component.literal(deathsPerHour < 0D ? "-" : String.format("%.2f", deathsPerHour));
         } else {
-            return new TextComponent("-").withStyle(ChatFormatting.RED);
+            return Component.literal("-").withStyle(ChatFormatting.RED);
         }
 
     }

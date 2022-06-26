@@ -58,7 +58,7 @@ public class OfflineHeadColumn extends Column {
     public void render(RowDrawingContext context) {
         PlayerInfo info;
         if (!playerInfoCache.containsKey(uuid)) {
-            info = new PlayerInfo(new ClientboundPlayerInfoPacket.PlayerUpdate(new GameProfile(uuid, playerName), 0, GameType.SURVIVAL, null));
+            info = new PlayerInfo(new ClientboundPlayerInfoPacket.PlayerUpdate(new GameProfile(uuid, playerName), 0, GameType.SURVIVAL, null, null), Minecraft.getInstance().getServiceSignatureValidator());
             info.getSkinLocation();
             playerInfoCache.put(uuid, info);
         } else {

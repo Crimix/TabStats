@@ -1,6 +1,5 @@
 package com.black_dog20.tabstats;
 
-import com.black_dog20.tabstats.common.compat.ModCompat;
 import com.black_dog20.tabstats.common.network.PacketHandler;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -24,8 +23,6 @@ public class TabStats {
         ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, Config.SERVER_CONFIG);
         Config.loadConfig(Config.SERVER_CONFIG, FMLPaths.CONFIGDIR.get().resolve(MOD_ID + "-server.toml"));
         event.addListener(this::setup);
-
-        ModCompat.register(event);
 
         MinecraftForge.EVENT_BUS.register(this);
     }
