@@ -27,9 +27,9 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.client.event.RenderGameOverlayEvent;
-import net.minecraftforge.client.gui.ForgeIngameGui;
-import net.minecraftforge.client.gui.IIngameOverlay;
+import net.minecraftforge.client.event.RenderGuiOverlayEvent;
+import net.minecraftforge.client.gui.overlay.NamedGuiOverlay;
+import net.minecraftforge.client.gui.overlay.VanillaGuiOverlay;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 import java.util.Collection;
@@ -42,7 +42,7 @@ import java.util.stream.Collectors;
 import static com.black_dog20.tabstats.common.utils.Translations.*;
 
 @OnlyIn(Dist.CLIENT)
-public class PlayerTabStatListOverlay extends GameOverlay.PreLayer {
+public class PlayerTabStatListOverlay extends GameOverlay.Pre {
 
     private static final Ordering<PlayerStat> ENTRY_ORDERING = Ordering.from(new PlayerComparator());
     private final Minecraft minecraft;
@@ -91,8 +91,8 @@ public class PlayerTabStatListOverlay extends GameOverlay.PreLayer {
     }
 
     @Override
-    public boolean doRender(IIngameOverlay iIngameOverlay) {
-        if (iIngameOverlay == ForgeIngameGui.CROSSHAIR_ELEMENT) {
+    public boolean doRender(NamedGuiOverlay overlay) {
+        if (overlay.id().equals(VanillaGuiOverlay.CROSSHAIR.id())) {
             return Keybinds.SHOW.isDown();
         }
 
@@ -105,8 +105,8 @@ public class PlayerTabStatListOverlay extends GameOverlay.PreLayer {
     }
 
     @SubscribeEvent
-    public void onOverlayRender(RenderGameOverlayEvent.Pre event) {
-        if (event.getType() == RenderGameOverlayEvent.ElementType.PLAYER_LIST) {
+    public void onExtraOverlayRender(RenderGuiOverlayEvent.Pre event) {
+        if (event.getOverlay().id().equals(VanillaGuiOverlay.PLAYER_LIST.id())) {
             if (event.isCancelable()) {
                 if (Keybinds.SHOW.isDown()) {
                     event.setCanceled(true);
