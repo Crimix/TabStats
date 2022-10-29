@@ -4,9 +4,11 @@ import com.black_dog20.bml.client.rows.RowDrawingContext;
 import com.black_dog20.bml.client.rows.columns.Column;
 import com.mojang.authlib.GameProfile;
 import com.mojang.blaze3d.systems.RenderSystem;
+import net.minecraft.Util;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.client.multiplayer.PlayerInfo;
+import net.minecraft.client.multiplayer.ServerData;
 import net.minecraft.network.protocol.game.ClientboundPlayerInfoPacket;
 import net.minecraft.world.level.GameType;
 
@@ -58,7 +60,8 @@ public class OfflineHeadColumn extends Column {
     public void render(RowDrawingContext context) {
         PlayerInfo info;
         if (!playerInfoCache.containsKey(uuid)) {
-            info = new PlayerInfo(new ClientboundPlayerInfoPacket.PlayerUpdate(new GameProfile(uuid, playerName), 0, GameType.SURVIVAL, null, null), Minecraft.getInstance().getServiceSignatureValidator());
+            boolean flag = Util.mapNullable(Minecraft.getInstance().getCurrentServer(), ServerData::m_242962_, false);
+            info = new PlayerInfo(new ClientboundPlayerInfoPacket.PlayerUpdate(new GameProfile(uuid, playerName), 0, GameType.SURVIVAL, null, null), Minecraft.getInstance().getServiceSignatureValidator(), flag);
             info.getSkinLocation();
             playerInfoCache.put(uuid, info);
         } else {
