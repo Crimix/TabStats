@@ -1,6 +1,10 @@
 # Tab Stats Changelog
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
+## [1.19.3, 1.0.4] - 2022-12-10
+- Port to 1.19.3
+- Jade compact is missing until Jade has updated
+
 ## [1.19.2, 1.0.4] - 2022-07-17
 - Fixed crash caused by new variable added to constructor in Minecraft 1.19.2 [#3](https://github.com/Crimix/TabStats/issues/3)
 - Bumped required Forge version to 43.1.1

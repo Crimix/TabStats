@@ -9,8 +9,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.client.multiplayer.PlayerInfo;
 import net.minecraft.client.multiplayer.ServerData;
-import net.minecraft.network.protocol.game.ClientboundPlayerInfoPacket;
-import net.minecraft.world.level.GameType;
 
 import java.util.Map;
 import java.util.UUID;
@@ -60,8 +58,8 @@ public class OfflineHeadColumn extends Column {
     public void render(RowDrawingContext context) {
         PlayerInfo info;
         if (!playerInfoCache.containsKey(uuid)) {
-            boolean flag = Util.mapNullable(Minecraft.getInstance().getCurrentServer(), ServerData::m_242962_, false);
-            info = new PlayerInfo(new ClientboundPlayerInfoPacket.PlayerUpdate(new GameProfile(uuid, playerName), 0, GameType.SURVIVAL, null, null), Minecraft.getInstance().getServiceSignatureValidator(), flag);
+            boolean flag = Util.mapNullable(Minecraft.getInstance().getCurrentServer(), ServerData::enforcesSecureChat, false);
+            info = new PlayerInfo(new GameProfile(uuid, playerName), flag);
             info.getSkinLocation();
             playerInfoCache.put(uuid, info);
         } else {
