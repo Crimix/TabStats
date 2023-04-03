@@ -58,6 +58,9 @@ minecraft {
             // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
 
+            // Disable mixin refmaps
+            property 'mixin.env.disableRefMap', 'true'
+
             mods {
                 TabStats {
                     source sourceSets.main
@@ -84,6 +87,9 @@ minecraft {
             // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
 
+            // Disable mixin refmaps
+            property 'mixin.env.disableRefMap', 'true'
+
             mods {
                 TabStats {
                     source sourceSets.main
@@ -102,6 +108,9 @@ minecraft {
 
             // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
+
+            // Disable mixin refmaps
+            property 'mixin.env.disableRefMap', 'true'
 
             // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
             args '--mod', 'tabstats', '--all', '--output', file('src/main/generated_resources'), '--existing', file('src/main/resources/')
@@ -143,7 +152,7 @@ repositories {
 dependencies {
     minecraft "net.minecraftforge:forge:${project.mc_version}-${project.forge_version}"
 
-    //implementation fg.deobf("curse.maven:jade-324717:${jade_version}")
+    implementation fg.deobf("curse.maven:jade-324717:${jade_version}")
     shadowCompileOnly fg.deobf("com.black_dog20.bml:bml:${bml_version}")
     runtimeOnly fg.deobf("com.black_dog20.bml:bml:${bml_version}")
 }
