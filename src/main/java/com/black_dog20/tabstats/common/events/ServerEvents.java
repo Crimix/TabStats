@@ -111,7 +111,7 @@ public class ServerEvents {
 
     @SubscribeEvent
     public static void onPlayerLogin(PlayerEvent.PlayerLoggedInEvent event) {
-        if (!event.getEntity().level.isClientSide) {
+        if (!event.getEntity().level().isClientSide) {
             ServerPlayer playerEntity = (ServerPlayer) event.getEntity();
             playerStatMap.put(playerEntity.getUUID(), PlayerStat.from(playerEntity.getUUID(), playerEntity.getGameProfile().getName(), playerEntity.getStats(), true));
 
@@ -148,7 +148,7 @@ public class ServerEvents {
 
     @SubscribeEvent
     public static void onPlayerLogout(PlayerEvent.PlayerLoggedOutEvent event) {
-        if (!event.getEntity().level.isClientSide) {
+        if (!event.getEntity().level().isClientSide) {
             ServerPlayer playerEntity = (ServerPlayer) event.getEntity();
             LAST_SEEN_MAP.put(playerEntity.getUUID().toString(), LocalDateTime.now().toEpochSecond(ZoneOffset.UTC));
             if (playerEntity.getServer() != null) {

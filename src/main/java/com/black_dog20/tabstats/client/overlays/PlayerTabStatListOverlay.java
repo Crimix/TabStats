@@ -15,11 +15,11 @@ import com.black_dog20.tabstats.common.utils.PlayerStat;
 import com.black_dog20.tabstats.common.utils.Translations;
 import com.google.common.collect.Ordering;
 import com.mojang.authlib.GameProfile;
-import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.multiplayer.ClientPacketListener;
 import net.minecraft.client.multiplayer.PlayerInfo;
 import net.minecraft.client.renderer.entity.ItemRenderer;
@@ -59,7 +59,7 @@ public class PlayerTabStatListOverlay extends GameOverlay.Pre {
     }
 
     @Override
-    public void onRender(PoseStack matrixStack, int width, int height) {
+    public void onRender(GuiGraphics guiGraphics, int width, int height) {
         int y = 10;
         int z = 0;
         if (Util.getMillis() - 2000 > lastRenderTime) {
@@ -83,9 +83,9 @@ public class PlayerTabStatListOverlay extends GameOverlay.Pre {
         int maxWidth = RowHelper.getMaxWidth(rows);
         int x = width / 2 - maxWidth / 2;
 
-        DrawingContext drawingContext = new DrawingContext(matrixStack, width, height, x, y, z, fontRenderer, itemRenderer);
+        DrawingContext drawingContext = new DrawingContext(guiGraphics, width, height, x, y, z, fontRenderer);
         y = RowHelper.drawRowsWithBackground(drawingContext, rows);
-        fontRenderer.drawShadow(matrixStack, PAGE.get(page, maxPages), width / 2 + 2, y + 2, -1);
+        guiGraphics.drawString(fontRenderer, PAGE.get(page, maxPages), width / 2 + 2, y + 2, -1);
         ticks++;
         lastRenderTime = Util.getMillis();
     }
