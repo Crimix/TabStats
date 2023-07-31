@@ -1,6 +1,7 @@
 package com.black_dog20.tabstats;
 
 import com.black_dog20.tabstats.common.network.PacketHandler;
+import com.black_dog20.tabstats.common.utils.CustomStats;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -29,5 +30,6 @@ public class TabStats {
 
     private void setup(final FMLCommonSetupEvent event){
 		PacketHandler.register();
+		CustomStats.register();
     }
 }

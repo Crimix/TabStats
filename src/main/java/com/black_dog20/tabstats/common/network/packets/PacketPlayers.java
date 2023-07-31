@@ -30,6 +30,7 @@ public class PacketPlayers {
             buffer.writeInt(stat.kills());
             buffer.writeInt(stat.playTime());
             buffer.writeLong(stat.lastOnline());
+            buffer.writeInt(stat.advancementCount());
         }
     }
 
@@ -38,7 +39,7 @@ public class PacketPlayers {
         int length = buffer.readInt();
         for (int i = 0; i < length; i++) {
             UUID uuid = buffer.readUUID();
-            map.put(uuid, new PlayerStat(uuid, buffer.readUtf(32767), buffer.readInt(), buffer.readInt(), buffer.readInt(), buffer.readLong()));
+            map.put(uuid, new PlayerStat(uuid, buffer.readUtf(32767), buffer.readInt(), buffer.readInt(), buffer.readInt(), buffer.readLong(), buffer.readInt()));
         }
         return new PacketPlayers(map);
     }

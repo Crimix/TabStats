@@ -12,16 +12,18 @@ public record PlayerStat(
         int deaths,
         int kills,
         int playTime,
-        long lastOnline) {
+        long lastOnline,
+        int advancementCount) {
 
     public static PlayerStat from(UUID uuid, String name, StatsCounter statsCounter, boolean isOnline) {
 
         int deaths = statsCounter.getValue(Stats.CUSTOM.get(Stats.DEATHS));
         int kills = statsCounter.getValue(Stats.CUSTOM.get(Stats.MOB_KILLS));
         int playTime = statsCounter.getValue(Stats.CUSTOM.get(Stats.PLAY_TIME));
+        int advancementCount = statsCounter.getValue(Stats.CUSTOM.get(CustomStats.ADVANCEMENTS_GAINED));
         long lastOnline = isOnline ? 0 : ServerEvents.getLastSeenAdjusted(uuid);
 
-        return new PlayerStat(uuid, name, deaths, kills, playTime, lastOnline);
+        return new PlayerStat(uuid, name, deaths, kills, playTime, lastOnline, advancementCount);
     }
 
     public Long getLastOnlineOrNull() {
