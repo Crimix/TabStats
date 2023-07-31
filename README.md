@@ -11,6 +11,7 @@ This includes
  - Kills
  - Deaths
  - Death/hour   
+ - Advancements
  
 It also works in single player.
 
