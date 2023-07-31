@@ -27,5 +27,6 @@ public class GeneratorLanguageEnglish extends BaseLanguageProvider {
         addPrefixed(DEATHS, "Deaths");
         addPrefixed(DEATHS_PER_HOUR, "Deaths/Hour");
         addPrefixed(NOW, "Now");
+        addPrefixed(ADVANCEMENTS, "Advancements");
     }
 }

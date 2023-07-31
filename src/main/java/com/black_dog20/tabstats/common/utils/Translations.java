@@ -13,7 +13,8 @@ public enum Translations  implements ITranslation {
     KILLS("gui.kills"),
     DEATHS("gui.deaths"),
     DEATHS_PER_HOUR("gui.deaths_per_hour"),
-    NOW("gui.now");
+    NOW("gui.now"),
+    ADVANCEMENTS("gui.advancements");
 
 
     private final String modId;

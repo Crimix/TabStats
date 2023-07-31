@@ -152,6 +152,8 @@ public class PlayerTabStatListOverlay extends GameOverlay.Pre {
                 .withColumn(BlankColumn.of("deathSpace", 6))
                 .withColumn(ITextComponentColumn.of("deathPerHour", getPlayerDeathsPerHour(playerStat), Column.Alignment.CENTER))
                 .withColumn(BlankColumn.of("deathPerHourSpace", 6))
+                .withColumn(ITextComponentColumn.of("advancements", getPlayerAdvancements(playerStat), Column.Alignment.CENTER))
+                .withColumn(BlankColumn.of("advancementsSpace", 6))
                 .build();
     }
 
@@ -181,6 +183,8 @@ public class PlayerTabStatListOverlay extends GameOverlay.Pre {
                 .withColumn(BlankColumn.of("deathSpace", 6))
                 .withColumn(ITextComponentColumn.of("deathPerHour", getTitleComponent(DEATHS_PER_HOUR), Column.Alignment.CENTER))
                 .withColumn(BlankColumn.of("deathPerHourSpace", 6))
+                .withColumn(ITextComponentColumn.of("advancements", getTitleComponent(ADVANCEMENTS), Column.Alignment.CENTER))
+                .withColumn(BlankColumn.of("advancementsSpace", 6))
                 .build();
     }
 
@@ -262,6 +266,16 @@ public class PlayerTabStatListOverlay extends GameOverlay.Pre {
             return Component.literal("-").withStyle(ChatFormatting.RED);
         }
 
+    }
+
+    private Component getPlayerAdvancements(PlayerStat playerStat) {
+        int advancementCount = playerStat.advancementCount();
+
+        if (advancementCount < 0) {
+            return Component.literal("-").withStyle(ChatFormatting.RED);
+        }
+
+        return Component.literal(Integer.toString(advancementCount));
     }
 
     public static String formatTime(long secs)

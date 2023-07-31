@@ -5,12 +5,15 @@ import com.black_dog20.tabstats.Config;
 import com.black_dog20.tabstats.TabStats;
 import com.black_dog20.tabstats.common.network.PacketHandler;
 import com.black_dog20.tabstats.common.network.packets.PacketPlayers;
+import com.black_dog20.tabstats.common.utils.CustomStats;
 import com.black_dog20.tabstats.common.utils.PlayerStat;
 import com.google.gson.reflect.TypeToken;
+import net.minecraft.advancements.Advancement;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.stats.ServerStatsCounter;
+import net.minecraft.stats.Stats;
 import net.minecraft.world.level.storage.LevelResource;
 import net.minecraftforge.common.UsernameCache;
 import net.minecraftforge.event.TickEvent;
@@ -26,12 +29,7 @@ import java.io.File;
 import java.lang.reflect.Type;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
@@ -67,6 +65,13 @@ public class ServerEvents {
                 if (onlinePlayers.contains(uuid)) {
                     ServerPlayer serverPlayer = server.getPlayerList().getPlayer(uuid);
                     if (serverPlayer != null) {
+                        Collection<Advancement> advancements = Objects.requireNonNull(serverPlayer.getServer()).getAdvancements().getAllAdvancements();
+                        serverPlayer.resetStat(Stats.CUSTOM.get(CustomStats.ADVANCEMENTS_GAINED));
+                        for (Advancement advancement : advancements) {
+                            if (serverPlayer.getAdvancements().getOrStartProgress(advancement).isDone()) {
+                                serverPlayer.awardStat(CustomStats.ADVANCEMENTS_GAINED);
+                            }
+                        }
                         playerStatMap.put(uuid, PlayerStat.from(uuid, name, serverPlayer.getStats(), true));
                     } else {
                         addNotOnlinePlayer(serverStatsCounterMap, uuid, name);
@@ -90,7 +95,7 @@ public class ServerEvents {
         if (serverStatsCounterMap.containsKey(uuid)) {
             playerStatMap.put(uuid, PlayerStat.from(uuid, name, serverStatsCounterMap.get(uuid), false));
         } else {
-            playerStatMap.put(uuid, new PlayerStat(uuid, name, -1, -1, -1, -1));
+            playerStatMap.put(uuid, new PlayerStat(uuid, name, -1, -1, -1, -1, -1));
         }
     }
 

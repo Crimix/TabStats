@@ -1,4 +1,5 @@
 {
+  "tabstats.gui.advancements": "Advancements",
   "tabstats.gui.deaths": "Deaths",
   "tabstats.gui.deaths_per_hour": "Deaths/Hour",
   "tabstats.gui.kills": "Kills",
