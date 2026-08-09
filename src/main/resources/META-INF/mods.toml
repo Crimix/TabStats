@@ -18,14 +18,14 @@ description='''
 '''
 
 [[dependencies.tabstats]]
-    modId="forge"
-    mandatory=true
-    versionRange="${forge_version_range}"
+    modId="neoforge"
+    type="required" #mandatory
+    versionRange="${neo_version_range}"
     ordering="NONE"
     side="BOTH"
 [[dependencies.tabstats]]
     modId="minecraft"
-    mandatory=true
+    type="required" #mandatory
     versionRange="${minecraft_version_range}"
     ordering="NONE"
     side="BOTH"

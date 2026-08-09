@@ -1,9 +1,9 @@
 package com.black_dog20.tabstats.common.events;
 
 import com.black_dog20.bml.utils.file.FileUtil;
+import com.black_dog20.bml.utils.network.NetworkUtils;
 import com.black_dog20.tabstats.Config;
 import com.black_dog20.tabstats.TabStats;
-import com.black_dog20.tabstats.common.network.PacketHandler;
 import com.black_dog20.tabstats.common.network.packets.PacketPlayers;
 import com.black_dog20.tabstats.common.utils.PlayerStat;
 import com.google.gson.reflect.TypeToken;
@@ -12,15 +12,15 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.stats.ServerStatsCounter;
 import net.minecraft.world.level.storage.LevelResource;
-import net.minecraftforge.common.UsernameCache;
-import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.event.entity.player.PlayerEvent;
-import net.minecraftforge.event.server.ServerStartingEvent;
-import net.minecraftforge.event.server.ServerStoppingEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.util.thread.EffectiveSide;
-import net.minecraftforge.server.ServerLifecycleHooks;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.util.thread.EffectiveSide;
+import net.neoforged.neoforge.common.UsernameCache;
+import net.neoforged.neoforge.event.TickEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerEvent;
+import net.neoforged.neoforge.event.server.ServerStartingEvent;
+import net.neoforged.neoforge.event.server.ServerStoppingEvent;
+import net.neoforged.neoforge.server.ServerLifecycleHooks;
 
 import java.io.File;
 import java.lang.reflect.Type;
@@ -77,7 +77,7 @@ public class ServerEvents {
                 }
             }
 
-            PacketHandler.sendToAll(new PacketPlayers(playerStatMap));
+            NetworkUtils.sendToAll(new PacketPlayers.Data(playerStatMap));
 
             ticks = 1;
             return;
@@ -115,7 +115,7 @@ public class ServerEvents {
             ServerPlayer playerEntity = (ServerPlayer) event.getEntity();
             playerStatMap.put(playerEntity.getUUID(), PlayerStat.from(playerEntity.getUUID(), playerEntity.getGameProfile().getName(), playerEntity.getStats(), true));
 
-            PacketHandler.sendToAll(new PacketPlayers(playerStatMap));
+            NetworkUtils.sendToAll(new PacketPlayers.Data(playerStatMap));
         }
     }
 
@@ -155,7 +155,7 @@ public class ServerEvents {
                 saveLastSeen(playerEntity.getServer().overworld());
             }
 
-            PacketHandler.sendToAll(new PacketPlayers(playerStatMap));
+            NetworkUtils.sendToAll(new PacketPlayers.Data(playerStatMap));
         }
     }
 

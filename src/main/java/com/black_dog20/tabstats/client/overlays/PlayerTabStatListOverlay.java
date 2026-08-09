@@ -25,12 +25,12 @@ import net.minecraft.client.multiplayer.PlayerInfo;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.client.event.RenderGuiOverlayEvent;
-import net.minecraftforge.client.gui.overlay.NamedGuiOverlay;
-import net.minecraftforge.client.gui.overlay.VanillaGuiOverlay;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.neoforge.client.event.RenderGuiOverlayEvent;
+import net.neoforged.neoforge.client.gui.overlay.NamedGuiOverlay;
+import net.neoforged.neoforge.client.gui.overlay.VanillaGuiOverlay;
 
 import java.util.Collection;
 import java.util.Comparator;
@@ -107,10 +107,8 @@ public class PlayerTabStatListOverlay extends GameOverlay.Pre {
     @SubscribeEvent
     public void onExtraOverlayRender(RenderGuiOverlayEvent.Pre event) {
         if (event.getOverlay().id().equals(VanillaGuiOverlay.PLAYER_LIST.id())) {
-            if (event.isCancelable()) {
-                if (Keybinds.SHOW.isDown()) {
-                    event.setCanceled(true);
-                }
+            if (Keybinds.SHOW.isDown()) {
+                event.setCanceled(true);
             }
         }
     }

@@ -1,7 +1,6 @@
-[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fcurseforge-badge-shields-io-caaw7pcenm0t.runkit.sh%2Fdownloads%3FprojectId%3D521717%26mode%3Dfull)](https://www.curseforge.com/minecraft/mc-mods/tab-stats)
-[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fcurseforge-badge-shields-io-caaw7pcenm0t.runkit.sh%2Fversions%3FprojectId%3D521717)](https://www.curseforge.com/minecraft/mc-mods/tab-stats)   
-[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fmodrinth-badge-shields-io-s1co4c2czdpy.runkit.sh/%2Fdownloads%3FprojectId%3DzWtYC4e6%26mode%3Dfull)](https://modrinth.com/mod/tab-stats)
-[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fmodrinth-badge-shields-io-s1co4c2czdpy.runkit.sh%2Fversions%3FprojectId%3DzWtYC4e6)](https://modrinth.com/mod/tab-stats)
+[![](https://img.shields.io/curseforge/dt/521717?style=flat&logo=curseforge&logoColor=%23F16436)](https://www.curseforge.com/minecraft/mc-mods/bml)
+[![](https://img.shields.io/modrinth/dt/zWtYC4e6?style=flat&logo=modrinth&logoColor=%2300AF5C)](https://modrinth.com/mod/bml)
+
 # Tab Stats
 [Tab Stats](https://minecraft.curseforge.com/projects/tab-stats) is a mod that will show you all player's stats that have ever played on the server.   
 
@@ -17,4 +16,4 @@ It also works in single player.
 The inspiration for the mod has come from multiple places but most notable [FTB Utilities (Forge)](https://www.curseforge.com/minecraft/mc-mods/ftb-utilities-forge) where it was possible to see when a player was last online and all of the other stats.
 
 As I in [Server Tab Info](https://www.curseforge.com/minecraft/mc-mods/server-tab-info) found out that the vanilla scoreboard is displayed on the player list, I began thinking about what stats to display and if it could be done like the player list.
-This has colminated in this mod.
+This has culminated in this mod.

@@ -63,14 +63,13 @@ public class OfflineHeadColumn extends Column {
                     .map(ServerData::enforcesSecureChat)
                     .orElse(false);
             info = new PlayerInfo(new GameProfile(uuid, playerName), flag);
-            info.getSkinLocation();
             playerInfoCache.put(uuid, info);
         } else {
             info = playerInfoCache.get(uuid);
         }
 
         if (display) {
-            ResourceLocation location = info.getSkinLocation();
+            ResourceLocation location = info.getSkin().texture();
             RenderSystem.setShaderTexture(0, location);
             int l2 = 8;
             int i3 = 8;
