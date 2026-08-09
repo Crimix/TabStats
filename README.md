@@ -1,5 +1,5 @@
-[![](https://img.shields.io/curseforge/dt/521717?style=flat&logo=curseforge&logoColor=%23F16436)](https://www.curseforge.com/minecraft/mc-mods/bml)
-[![](https://img.shields.io/modrinth/dt/zWtYC4e6?style=flat&logo=modrinth&logoColor=%2300AF5C)](https://modrinth.com/mod/bml)
+[![](https://img.shields.io/curseforge/dt/521717?style=flat&logo=curseforge&logoColor=%23F16436)](https://www.curseforge.com/minecraft/mc-mods/tab-stats)
+[![](https://img.shields.io/modrinth/dt/zWtYC4e6?style=flat&logo=modrinth&logoColor=%2300AF5C)](https://modrinth.com/mod/tab-stats)
 
 # Tab Stats
 [Tab Stats](https://minecraft.curseforge.com/projects/tab-stats) is a mod that will show you all player's stats that have ever played on the server.   
